@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+ * ESC — Essência e Estilo
+ * Paleta derivada do logo da marca: o magenta do anel (#a0268b), o creme
+ * champanhe do interior e o lilás do degradê. O ameixa profundo é a versão
+ * escurecida do magenta, usada nas seções de fundo cheio.
+ * A identidade é clara por decisão de marca — não há variante escura.
+ */
+@theme {
+  --color-pearl: #fdf7fb;
+  --color-lilac: #f2e3ee;
+  --color-magenta: #a0268b;
+  --color-magenta-dark: #7c1c6b;
+  --color-champagne: #efdcb4;
+  --color-plum: #2b0f26;
+  --color-mauve: #6e5266;
+
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+
+  --animate-fade-up: fade-up 0.7s ease-out both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Compensa o cabeçalho fixo ao navegar pelas âncoras. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background-color: var(--color-pearl);
+    color: var(--color-plum);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-lilac);
+    color: var(--color-plum);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-magenta);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
